@@ -1,0 +1,8 @@
+body {
+  background: lightblue;
+  color: green;
+}
+
+.hidden {
+  visibility: hidden;
+}

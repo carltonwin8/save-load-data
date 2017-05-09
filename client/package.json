@@ -1,0 +1,33 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:html": "pug --pretty --out dist templates/index.pug",
+    "watch:html": "watch 'npm run build:html' templates/",
+    "build:css": "postcss -o dist/styles.css styles/*.css",
+    "watch:css": "watch 'npm run build:css' styles/",
+    "babel:js": "babel js -d tmp/babel",
+    "browserify:js": "browserify tmp/babel/entry.js -o dist/js/entry.js",
+    "build:js": "npm-run-all babel:js browserify:js",
+    "watch:js": "watch 'npm run build:js' js",
+    "build": "npm-run-all --parallel build:*",
+    "serve": "browser-sync start -s dist -f dist",
+    "watchNserve": "npm-run-all --parallel watch:* serve",
+    "dev": "npm-run-all build watchNserve"
+  },
+  "author": "Carlton  Joseph",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "browser-sync": "^2.18.8",
+    "browserify": "^14.3.0",
+    "npm-run-all": "^4.0.2",
+    "postcss-cli": "^3.2.0",
+    "pug": "^2.0.0-rc.1",
+    "pug-cli": "^1.0.0-alpha6",
+    "watch": "^1.0.2"
+  }
+}

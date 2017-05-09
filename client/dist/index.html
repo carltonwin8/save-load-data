@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Knockout Load Save</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Tasks</h1>
+    <form data-bin="submit: addTask">
+      <Add>task:</Add>
+      <input data-bind="value: newTaskText" placeholder="What needs to be done.">
+      <button type="submit">Add</button>
+    </form>
+    <p>You have<b data-bind="text: incompleteTask().length">&nbsp;</b>
+      <incomplete>task(s)</incomplete><span data-bind="visible: incompleteTasks().length == 0">- it is beer time!</span>
+    </p>
+    <ul data-bind="foreach: task, visible: tasks().lenght &gt; 0">
+      <li>
+        <input type="checkbox" data-bind="checked: isDone">
+        <input data-bind="value: title, disable: isDone"><a href="#" data-bind="click: $parent.removeTask">Delete</a>
+      </li>
+    </ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+    <script src="js/entry.js"></script>
+  </body>
+</html>
