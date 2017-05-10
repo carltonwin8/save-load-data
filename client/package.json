@@ -18,8 +18,9 @@
     "watch:js": "watch 'npm run build:js' js",
     "build": "npm-run-all --parallel build:*",
     "prod": "npm-run-all --parallel prod:*",
-    "serve": "browser-sync start --config bs-config.js -s dist -f dist",
-    "watchNserve": "npm-run-all --parallel watch:* serve",
+    "caddy": "caddy --conf Caddyfile --log stdout",
+    "serve": "browser-sync start --config bs-config.js -f dist",
+    "watchNserve": "npm-run-all --parallel watch:* caddy serve",
     "dev": "npm-run-all build watchNserve"
   },
   "author": "Carlton  Joseph",

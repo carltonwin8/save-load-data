@@ -18,10 +18,21 @@ function TaskListViewModel() {
         self.newTaskText("");
     };
     self.removeTask = function(task) { self.tasks.remove(task) };
-    console.log("initialization completed")
+
+    // Load initial state from server, convert it to Task instances, then populate self.tasks
+    $.getJSON("/tasks", function(allData) {
+        var mappedTasks = $.map(allData, function(item) { return new Task(item) });
+        self.tasks(mappedTasks);
+    })
+    .fail(function() {
+      console.log( "error" );
+    })
+    .always(function() {
+      console.log( "complete" );
+    });
 }
 
 ko.applyBindings(new TaskListViewModel());
 
-
+document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.18.8'><\/script>".replace("HOST", location.hostname));
 // document.write(require("./content.js"));
