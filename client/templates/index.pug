@@ -22,6 +22,12 @@ html(lang="en")
         input(data-bind="value: title, disable: isDone")
         a(href="#", data-bind="click: $parent.removeTask") Delete
 
+    form(action="/tasks/saveform", method="post")
+      input(type="hidden", name="tasks", data-bind="value: ko.toJSON(tasks)")
+      button(type="submit") Save Form
+
+    <button data-bind="click: save">Save Ajax</button>
+
     script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js")
     script(src="js/entry.js")
