@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon server.js"
+    "refresh": "browser-sync reload --port 3002 --reload-delay 200",
+    "watch": "watch 'npm run refresh' js/",
+    "serve": "nodemon js/server.js",
+    "watchNserve": "npm-run-all --parallel watch serve"
   },
   "author": "Carlton Joseph",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^1.11.0"
+    "browser-sync": "^2.18.8",
+    "nodemon": "^1.11.0",
+    "npm-run-all": "^4.0.2",
+    "watch": "^1.0.2"
   },
   "dependencies": {
     "hapi": "^16.1.1"
