@@ -13,8 +13,7 @@
  |
  */
 module.exports = {
-    "port": 3002,
-    "proxy": "localhost:8080",
+    "proxy": "localhost:5000",
     "files": "dist",
     "reloadDelay": 200,
     "reloadDebounce": 200

@@ -2,8 +2,10 @@
 
 const Hapi = require('hapi');
 
+const port = process.env.PORT || 4000;
+
 const server = new Hapi.Server();
-server.connection({ port: 3001, host: 'localhost' });
+server.connection({ port: port, host: 'localhost' });
 
 function task(title, isDone) {
   return { title: title, isDone: isDone };
